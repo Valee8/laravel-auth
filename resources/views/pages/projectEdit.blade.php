@@ -6,7 +6,7 @@
         Edit Project
     </h1>
 
-    <form method="POST" action="{{ route('project.update', $project) }}">
+    <form method="POST" action="{{ route('admin.project.update', $project) }}" enctype="multipart/form-data">
         @csrf
 
         <label for="name">Name: </label>
@@ -16,7 +16,7 @@
         <textarea name="description" cols="30" rows="2"></textarea>
         <br>
         <label for="main_image">Image URL: </label>
-        <input type="url" name="main_image" value="{{ $project -> main_image}}">
+        <input type="file" name="main_image">
         <br>
         <label for="release_date">Release Date: </label>
         <input type="date" name="release_date" value="{{ $project -> release_date}}">
