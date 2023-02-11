@@ -20,30 +20,20 @@ Route::get('/', [MainController::class, 'home']) -> name('home');
 
 Route::get('/show/{project}', [MainController::class, 'projectShow']) -> name('project.show');
 
-Route::get('/delete/{project}', [MainController::class, 'projectDelete']) -> name('project.delete');
-
-Route::get('/create', [MainController::class, 'projectCreate']) -> name('project.create');
-
-Route::post('/store', [MainController::class, 'projectStore']) -> name('project.store');
-
-Route::get('/project/edit/{project}', [MainController::class, 'projectEdit']) -> name('project.edit');
-
-Route::post('/project/update/{project}', [MainController::class, 'projectUpdate']) -> name('project.update');
-
-
-
-// Route::middleware(['auth', 'verified'])
-//    ->name('private.')
-//    ->prefix('private')
-//    ->group(function () {
-//     Route::get('/project/delete/{project}', [MainController::class, 'projectDelete']);
-// });
-
 Route::middleware(['auth', 'verified'])
-   ->name('private.')
-   ->prefix('private')
+   ->name('admin.')
+   ->prefix('admin')
    ->group(function () {
-    Route::get('/', [MainController::class, 'privateHome']);
+    Route::get('/delete/{project}', [MainController :: class, 'projectDelete']) -> name('project.delete');
+
+    Route::get('/create', [MainController::class, 'projectCreate']) -> name('project.create');
+
+    Route::post('/store', [MainController::class, 'projectStore']) -> name('project.store');
+
+    Route::get('/project/edit/{project}', [MainController::class, 'projectEdit']) -> name('project.edit');
+
+    Route::post('/project/update/{project}', [MainController::class, 'projectUpdate']) -> name('project.update');
+
 });
 
 Route::get('/dashboard', function () {
