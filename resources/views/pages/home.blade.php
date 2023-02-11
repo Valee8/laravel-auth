@@ -2,22 +2,26 @@
 
 @section('content')
 
-    <h1>
-        Projects
-    </h1>
-
-    <h2>
-        <a href="{{ route('project.create') }}">Create new Project</a>
-    </h2>
-
-    <ul>
-        @foreach ($projects as $project)
-            <li>
-                <a href="{{ route('project.show', $project) }}">{{ $project -> name }}</a> - 
-                <a href="{{ route('project.delete', $project) }}">Delete</a> - 
-                <a href="{{ route('project.edit', $project) }}">Edit</a>
-            </li>
-        @endforeach
-    </ul>
+    <div class="container pt-5" id="home-container">
+        <h1>
+            Projects
+        </h1>
+    
+        <h2>
+            <a href="{{ route('admin.project.create') }}" class="text-decoration-none">Create new Project</a>
+        </h2>
+    
+        <div class="row">
+            @foreach ($projects as $project)
+                <div class="col-4">
+                    <a href="{{ route('project.show', $project) }}" class="text-decoration-none">{{ $project -> name }}</a>  
+                    @auth
+                        - <a href="{{ route('admin.project.edit', $project) }}" class="text-decoration-none">Edit</a>
+                        - <a href="{{ route('admin.project.delete', $project) }}" class="text-decoration-none">Delete</a>
+                    @endauth
+                </div>
+            @endforeach
+        </ul>
+    </div>
     
 @endsection
