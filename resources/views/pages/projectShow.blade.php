@@ -11,7 +11,7 @@
             Description: {{ $project -> description }}
         </li>
         <li>
-            <img src="{{ $project -> main_image }}" alt="{{ $project -> name }}">
+            <img class="project-img" src="{{ asset('storage/' . $project -> main_image) }}" alt="{{ $project -> name }}">
         </li>
         <li>
             Release date: {{ $project -> release_date }}
