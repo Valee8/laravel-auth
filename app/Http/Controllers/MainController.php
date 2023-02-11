@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Project;
 
 
@@ -14,10 +16,6 @@ class MainController extends Controller
         $projects = Project::all();
 
         return view('pages.home', compact('projects'));
-    }
-
-    public function privateHome() {
-        return view('pages.private-home');
     }
 
     public function projectShow(Project $project) {
@@ -40,13 +38,18 @@ class MainController extends Controller
 
         $data = $request -> validate([
 
-            'name' => 'required|unique:projects,name|string|max:64',
+            'name' => 'required|min:3|unique:projects,name|string|max:64',
             'description' => 'nullable|string',
-            'main_image' => 'url|unique:projects,main_image',
-            'release_date' => 'date|before:today',
+            'main_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'release_date' => 'required|date|before:today',
             'repo_link' => 'required||unique:projects,repo_link|string',
 
         ]);
+
+        $img_path = Storage::put('uploads', $data['main_image']);
+        $data['main_image'] = $img_path;
+
+        // $project = Project::create($data);
 
         $project = new Project();
 
@@ -70,20 +73,24 @@ class MainController extends Controller
 
         $data = $request -> validate([
 
-            'name' => 'required|unique:projects,name|string|max:64',
+            'name' => 'required|min:3|unique:projects,name|string|max:64' . $project -> id,
             'description' => 'nullable|string',
-            'main_image' => 'url|unique:projects,main_image',
-            'release_date' => 'date|before:today',
-            'repo_link' => 'required||unique:projects,repo_link|string',
+            'main_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'release_date' => 'required|date|before:today',
+            'repo_link' => 'required||unique:projects,repo_link|string' . $project -> id,
 
         ]);
 
-        $project -> name = $data['name'];
-        $project -> description = $data['description'];
-        $project -> main_image = $data['main_image'];
-        $project -> release_date = $data['release_date'];
-        $project -> repo_link = $data['repo_link'];
+        $img_path = Storage::put('uploads', $data['main_image']);
+        $data['main_image'] = $img_path;
 
+        // $project -> name = $data['name'];
+        // $project -> description = $data['description'];
+        // $project -> main_image = $data['main_image'];
+        // $project -> release_date = $data['release_date'];
+        // $project -> repo_link = $data['repo_link'];
+
+        $project -> update($data);
         $project -> save();
 
         return redirect() -> route('home');
