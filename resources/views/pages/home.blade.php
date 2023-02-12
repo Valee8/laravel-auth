@@ -16,6 +16,7 @@
         <div class="row">
             @foreach ($projects as $project)
                 <div class="col-4">
+                    <img class="project-img" src="{{ Vite::asset('storage/app/public/' . $project -> main_image) }}" alt="{{ $project -> name }}">
                     <a href="{{ route('project.show', $project) }}" class="text-decoration-none">{{ $project -> name }}</a>  
                     @auth
                         - <a href="{{ route('admin.project.edit', $project) }}" class="text-decoration-none">Edit</a>

@@ -9,9 +9,7 @@
     <ul>
         <li>
             Description: {{ $project -> description }}
-        </li>
-        <li>
-            <img src="{{ Vite::asset('storage/app/public/' . $project -> main_image) }}" alt="">
+        </li>            
         <li>
             Release date: {{ $project -> release_date }}
         </li>
