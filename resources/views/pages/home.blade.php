@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container pt-5" id="home-container">
+    <div class="container pt-5">
         <h1>
             Projects
         </h1>
@@ -21,7 +21,7 @@
                     @endauth
                 </div>
             @endforeach
-        </ul>
+         </div>
     </div>
     
 @endsection
