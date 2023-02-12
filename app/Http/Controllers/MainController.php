@@ -74,12 +74,12 @@ class MainController extends Controller
 
         $data = $request -> validate([
 
-            'name' => 'required|min:3|unique:projects,name|string|max:64' . $project -> id,
+            'name' => 'required|min:3|unique:projects,name|string|max:64,' . $project -> id,
             'description' => 'nullable|string',
             'main_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             //'main_image' => 'url|unique:projects,main_image',
             'release_date' => 'required|date|before:today',
-            'repo_link' => 'required||unique:projects,repo_link|string' . $project -> id,
+            'repo_link' => 'required|string|unique:projects,repo_link,' . $project -> id,
 
         ]);
 
