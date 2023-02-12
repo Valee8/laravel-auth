@@ -7,9 +7,11 @@
             Projects
         </h1>
     
-        <h2>
-            <a href="{{ route('admin.project.create') }}" class="text-decoration-none">Create new Project</a>
-        </h2>
+        @auth
+            <h2>
+                <a href="{{ route('admin.project.create') }}" class="text-decoration-none">Create new Project</a>
+            </h2>
+        @endauth
     
         <div class="row">
             @foreach ($projects as $project)
