@@ -1,5 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
 
+#home-container {
+    height: 400px;
+    overflow: auto;
+
+}
+
+.overflow {
+    overflow: hidden;
+}
+
 .project-img {
     max-width: 300px;
 }

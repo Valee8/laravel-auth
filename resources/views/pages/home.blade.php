@@ -13,7 +13,7 @@
             </h2>
         @endauth
     
-        <div class="row">
+        <div class="row pt-5 pb-5" id="home-container">
             @foreach ($projects as $project)
                 <div class="col-4">
                     <img class="project-img" src="{{ Vite::asset('storage/app/public/' . $project -> main_image) }}" alt="{{ $project -> name }}">

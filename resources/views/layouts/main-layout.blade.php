@@ -13,8 +13,10 @@
     @vite(['resources/js/app.js'])
 </head>
 <body>
-    @include('components.header')
-    @include('components.errors')
-    @yield('content')
+        <div class="overflow">
+            @include('components.header')
+            @include('components.errors')
+            @yield('content')
+        </div>
 </body>
 </html>
