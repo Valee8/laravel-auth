@@ -15,7 +15,7 @@
         <label for="description">Description: </label>
         <textarea name="description" cols="30" rows="2"></textarea>
         <br>
-        <label for="main_image">Image URL: </label>
+        <label for="main_image">Image: </label>
         <input type="file" name="main_image">
         <br>
         <label for="release_date">Release Date: </label>
