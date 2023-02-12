@@ -17,7 +17,7 @@ return new class extends Migration
             $table -> id();
             $table -> string('name', 64) -> unique();
             $table -> text('description') -> nullable(true);
-            $table -> string('main_image') -> default('charmander.jpg');
+            $table -> string('main_image') -> default('logo.png');
             $table -> date('release_date');
             $table -> string('repo_link') -> unique();
             $table -> timestamps();
