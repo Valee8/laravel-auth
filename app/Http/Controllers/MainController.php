@@ -40,7 +40,6 @@ class MainController extends Controller
 
             'name' => 'required|min:3|unique:projects,name|string|max:64',
             'description' => 'nullable|string',
-            //'main_image' => 'url|unique:projects,main_image',
             'main_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'release_date' => 'required|date|before:today',
             'repo_link' => 'required||unique:projects,repo_link|string',
@@ -77,7 +76,6 @@ class MainController extends Controller
             'name' => 'required|min:3|unique:projects,name|string|max:64,' . $project -> id,
             'description' => 'nullable|string',
             'main_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            //'main_image' => 'url|unique:projects,main_image',
             'release_date' => 'required|date|before:today',
             'repo_link' => 'required|string|unique:projects,repo_link,' . $project -> id,
 
