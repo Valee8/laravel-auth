@@ -6,26 +6,24 @@
         Edit Project
     </h1>
 
-    <form method="POST" action="{{ route('admin.project.update', $project) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.project.update', $project) }}" enctype="multipart/form-data" class="w-25">
         @csrf
+        <label for="name" class="col-form-label">Name</label>
+        <input type="text" name="name" class="form-control mb-2" value={{ $project -> name}}>
 
-        <label for="name">Name: </label>
-        <input type="text" name="name" value={{ $project -> name}}>
-        <br>
-        <label for="description">Description: </label>
-        <textarea type="text" name="description" value={{ $project -> description }}></textarea>
-        <br>
-        <label for="main_image">Image: </label>
-        <input type="file" name="main_image" value={{ $project -> main_image }}>
-        <br>
-        <label for="release_date">Release Date: </label>
-        <input type="date" name="release_date" value={{ $project -> release_date}}>
-        <br>
-        <label for="repo_link">Repo Link: </label>
-        <input type="url" name="repo_link" value={{ $project -> repo_link}}>
-        <br>
-        <input type="submit" value="UPDATE">
-    
+        <label for="description" class="col-form-label">Description</label>
+        <textarea type="text" name="description" class="form-control mb-2" value={{ $project -> description }}></textarea>
+
+        <label for="main_image" class="col-form-label">Image</label>
+        <input type="file" name="main_image" class="form-control mb-2" value={{ $project -> main_image }}>
+
+        <label for="release_date" class="col-form-label">Release Date</label>
+        <input type="date" name="release_date" class="form-control mb-2" value={{ $project -> release_date}}>
+
+        <label for="repo_link" class="col-form-label">Repo Link</label>
+        <input type="url" name="repo_link" class="form-control mb-3" value={{ $project -> repo_link}}>
+
+        <input type="submit" class="btn btn-primary" value="UPDATE">
     </form>
 
 @endsection
