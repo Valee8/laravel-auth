@@ -2,20 +2,20 @@
 
 @section('content')
 
-    <h1>
-        {{ $project -> name }}
+    <h1 class="pb-4">
+        Name project: {{ $project -> name }}
     </h1>
 
-    <ul>
-        <li>
-            Description: {{ $project -> description }}
-        </li>            
-        <li>
-            Release date: {{ $project -> release_date }}
-        </li>
-        <li>
-            <a href="{{ $project -> repo_link }}">Repo Link</a>
-        </li>
-    </ul>
+    @if ($project -> description !== null)
+        <h3>
+            Description: {{ $project -> description }}                          
+        </h3> 
+    @endif  
+    <h3>
+        Release date: {{ $project -> release_date }}
+    </h3>
+    <h3>
+        <a href="{{ $project -> repo_link }}" target="_blank">Repo Link</a>
+    </h3>
     
 @endsection
